@@ -1,0 +1,69 @@
+class FIFOQueue {
+    constructor() {
+        this.queue = [];
+    }
+
+    // Method to add an element to the end of the queue
+    enqueue(element) {
+        this.queue.push(element);
+    }
+
+    // Method to remove and return the first element from the queue
+    dequeue() {
+        if (this.isEmpty()) {
+            return "Queue is empty";
+        }
+        return this.queue.shift();
+    }
+
+    // Method to return the first element without removing it
+    peek() {
+        if (this.isEmpty()) {
+            return "Queue is empty";
+        }
+        return this.queue[0];
+    }
+
+    // Method to check if the queue is empty
+    isEmpty() {
+        return this.queue.length === 0;
+    }
+
+    // Method to return the size of the queue
+    size() {
+        return this.queue.length;
+    }
+
+    // Method to print the elements of the queue
+    printQueue() {
+        console.log("Queue:", this.queue.join(' -> '));
+    }
+}
+
+// Example usage of FIFOQueue class
+let fifo = new FIFOQueue();
+
+// Adding elements to the queue
+fifo.enqueue("A");
+fifo.enqueue("B");
+fifo.enqueue("C");
+
+// Printing the queue
+fifo.printQueue(); // Output: Queue: A -> B -> C
+
+// Removing an element from the queue
+let removedElement = fifo.dequeue();
+console.log("Removed element:", removedElement); // Output: Removed element: A
+
+// Printing the queue after dequeue
+fifo.printQueue(); // Output: Queue: B -> C
+
+// Peeking at the first element
+let firstElement = fifo.peek();
+console.log("First element:", firstElement); // Output: First element: B
+
+// Checking if the queue is empty
+console.log("Is queue empty?", fifo.isEmpty()); // Output: Is queue empty? false
+
+// Getting the size of the queue
+console.log("Queue size:", fifo.size()); // Output: Queue size: 2
